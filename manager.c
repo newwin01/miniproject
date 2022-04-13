@@ -97,3 +97,32 @@ void searchProductOrigin_poly(Product *p,int count){
     if(scount==0)
     printf("데이터 없음!\n");
 }
+
+void searchProductWeight_poly(Product *p,int count){
+    char search[MAX];
+    int scount=0;
+    getchar();
+    printf("제품 무게(정확히 입력):");
+    scanf("%[^\n]s",search);
+    printf("\n***************\n");
+    for(int i=0;i<count;i++){
+        if(p[i].price==-1) continue;
+        #ifdef DEBUG
+            printf("\nDEBUG\n");
+            readProduct(p[i]);
+             printf("===================\n");
+        #endif
+        if(strcmp(p[i].weight,search)==0){
+            printf("\n");
+        readProduct(p[i]);
+        scount++;
+        }
+    }
+    if(scount==0)
+    printf("데이터 없음!\n");
+}
+
+
+
+
+
