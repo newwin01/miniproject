@@ -121,7 +121,37 @@ void searchProductWeight_poly(Product *p,int count){
     if(scount==0)
     printf("데이터 없음!\n");
 }
-
+int loadData(Product *p){//파일 형태의 제품 정보를 입력한다.
+    FILE *fp=NULL;
+    char *dummy=NULL;
+    char sentence[100];
+    int i=0;
+    fp=fopen("product.txt","rt");
+    if(fp==NULL) return -1;
+    while(fgets(sentence,MAX,fp)){
+        #ifdef DEBUG
+            printf("%d\n",i);
+            printf("%s\n\n",sentence);
+        #endif
+        dummy=strtok(sentence,";");
+        strcpy(p[i].product_name,dummy);
+        dummy=strtok(NULL,";");
+        strcpy(p[i].product_exp,dummy);
+        dummy=strtok(NULL,";");
+        strcpy(p[i].weight,dummy);
+        dummy=strtok(NULL,";");
+        p[i].price=atoi(dummy);
+        dummy=strtok(NULL,";");
+        p[i].shipping=atoi(dummy);
+        dummy=strtok(NULL,";");
+        strcpy(p[i].origin,dummy);
+        dummy=strtok(NULL,";");
+        p[i].user_money=atoi(dummy);
+        i++;
+    }
+    fclose(fp);
+    return i;
+}
 
 
 
