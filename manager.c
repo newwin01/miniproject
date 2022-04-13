@@ -167,6 +167,13 @@ void saveData(Product *p, int count){
     fclose(fp);
     printf("저장됨");
 }
+int selectDataNo(Product *p,int count){
+    int no;
+    listProduct(p,count);
+    printf("번호는? 최소 (0) ? ");
+    scanf("%d",&no);
+    return no;
+}
 
 
 
