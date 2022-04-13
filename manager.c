@@ -74,4 +74,26 @@ void searchproductExp_poly(Product *p,int count){//제품의 설명 검색을 �
     if(scount==0)
     printf("데이터 없음!\n");
 }
-
+void searchProductOrigin_poly(Product *p,int count){
+    char search[MAX];
+    int scount=0;
+    getchar();
+    printf("제품 원산지:");
+    scanf("%[^\n]s",search);
+    printf("\n***************\n");
+    for(int i=0;i<count;i++){
+        if(p[i].price==-1) continue;
+        #ifdef DEBUG
+             printf("\nDEBUG\n");
+            readProduct(p[i]);
+             printf("===================\n");
+        #endif
+        if(strstr(p[i].origin,search)){
+            printf("\n");
+        readProduct(p[i]);
+        scount++;
+        }
+    }
+    if(scount==0)
+    printf("데이터 없음!\n");
+}
