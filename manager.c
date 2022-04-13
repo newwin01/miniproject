@@ -154,5 +154,20 @@ int loadData(Product *p){//파일 형태의 제품 정보를 입력한다.
 }
 
 
+void saveData(Product *p, int count){
+    FILE *fp=NULL;
+    fp=fopen("product.txt","wt");
+    for(int i=0;i<count;i++){
+        if(p[i].price==-1) continue;
+        fprintf(fp,"%s;%s;%s;%d;%d;%s;%d\n",p[i].product_name,p[i].product_exp,p[i].weight,p[i].price,p[i].shipping,p[i].origin,p[i].user_money);
+        #ifdef DEBUG
+            readProduct(p[i]);
+        #endif
+    }
+    fclose(fp);
+    printf("저장됨");
+}
+
+
 
 
